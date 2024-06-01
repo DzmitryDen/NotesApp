@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
     <TextView
+        style="@style/TitleMainStyle"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="@dimen/dp_200"
+        android:text="@string/title_spiice" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="@dimen/dp_60"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/main_button"
+            style="@style/ButtonMainStyle"
+            android:layout_gravity="center|bottom"
+            android:text="@string/text_main_button" />
+
+
+        <TextView
+            android:id="@+id/main_query"
+            style="@style/TextQueryClickStyle"
+            android:layout_gravity="center|top"
+            android:layout_margin="@dimen/dp_40"
+            android:text="@string/account_login_query" />
+
+    </LinearLayout>
+
+</FrameLayout>

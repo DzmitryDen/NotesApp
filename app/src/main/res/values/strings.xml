@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">NotesApp</string>
+    <string name="title_spiice">Spiice</string>
+    <string name="account_login_query">You have an Account ? <b>Log-in</b></string>
+    <string name="text_main_button">Discover the platform</string>
+    <string name="title_signup">Sign-up</string>
+    <string name="hint_first_name">First name</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="text_signup_button">Sign-up</string>
+    <string name="title_login">Log-in</string>
+    <string name="text_login_button">Log-in</string>
+    <string name="return_to_signup_query">Return to Sign-up</string>
 </resources>

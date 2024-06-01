@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleMainStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/red_hat_display</item>
+        <item name="android:textSize">@dimen/sp_100</item>
+    </style>
+
+    <style name="ButtonMainStyle">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:layout_width">@dimen/dp_300</item>
+        <item name="android:layout_height">@dimen/dp_60</item>
+    </style>
+
+    <style name="TextQueryClickStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/red_hat_display</item>
+        <item name="android:textSize">@dimen/sp_40</item>
+    </style>
+
+    <style name="EditFieldStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_46</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+</resources>
