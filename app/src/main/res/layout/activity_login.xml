@@ -22,16 +22,14 @@
             android:id="@+id/login_email"
             style="@style/EditFieldStyle"
             android:layout_gravity="center|top"
-            android:hint="@string/hint_email"
-            android:paddingStart="@dimen/dp_20" />
+            android:hint="@string/hint_email" />
 
         <EditText
             android:id="@+id/login_password"
             style="@style/EditFieldStyle"
             android:layout_gravity="center|top"
             android:layout_marginTop="@dimen/dp_20"
-            android:hint="@string/hint_password"
-            android:paddingStart="@dimen/dp_20" />
+            android:hint="@string/hint_password" />
 
     </LinearLayout>
 
