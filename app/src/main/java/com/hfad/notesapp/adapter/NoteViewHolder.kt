@@ -29,5 +29,16 @@ class NoteViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         view.findViewById<TextView>(R.id.title_note).setOnClickListener {
             Toast.makeText(view.context, note.title, Toast.LENGTH_SHORT).show()
         }
+
+        messageView.apply {
+            maxLines = 2
+            setOnClickListener {
+                if (maxLines == 2) {
+                    maxLines = Int.MAX_VALUE
+                } else {
+                    maxLines = 2
+                }
+            }
+        }
     }
 }
