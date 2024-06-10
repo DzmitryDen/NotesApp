@@ -4,7 +4,7 @@ object NoteDataBase {
 
     val noteList = arrayListOf<Note>(
         Note(
-            title = "Title visualization (hard code) ",
+            title = "Title (hard code) ",
             message = "Test text message.  Test text message. Test text message. Test text message. Test text message. Test text message."
         ),
     )
