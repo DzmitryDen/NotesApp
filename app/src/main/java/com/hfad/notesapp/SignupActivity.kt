@@ -7,6 +7,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.hfad.notesapp.validation.checkEmail
+import com.hfad.notesapp.validation.checkSignName
+import com.hfad.notesapp.validation.checkSignPassword
+import com.hfad.notesapp.validation.validatorToast
 import java.util.regex.Pattern
 
 class SignupActivity : AppCompatActivity() {
@@ -22,35 +26,19 @@ class SignupActivity : AppCompatActivity() {
 
 
         firstNameField.doAfterTextChanged { text ->
-            val lengthString = text.toString().length
-            if (lengthString < 3 || lengthString > 255) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            validatorToast(this, checkSignName(text), getString(R.string.error_common))
             }
-        }
 
         lastNameField.doAfterTextChanged { text ->
-            val lengthString = text.toString().length
-            if (lengthString < 3 || lengthString > 255) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
+            validatorToast(this, checkSignName(text), getString(R.string.error_common))
         }
 
         emailField.doAfterTextChanged { text ->
-            val str = text.toString()
-            if (!Patterns.EMAIL_ADDRESS.matcher(str).matches()) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
+            validatorToast(this, checkEmail(text), getString(R.string.error_common))
         }
 
         passwordField.doAfterTextChanged { text ->
-            val str = text.toString()
-            val lengthString = str.length
-            val patternPassword = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).+$")
-            val matcher = patternPassword.matcher(str)
-
-            if ((lengthString < 6 || lengthString > 50) || !matcher.matches()) {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
+            validatorToast(this, checkSignPassword(text), getString(R.string.error_common))
         }
 
         val clickQueryText = findViewById<TextView>(R.id.signup_query)

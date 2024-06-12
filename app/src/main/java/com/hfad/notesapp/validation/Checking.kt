@@ -4,13 +4,19 @@ import android.text.Editable
 import android.util.Patterns
 import java.util.regex.Pattern
 
+private const val MIN_LENGTH_SIGN_NAME = 3
+private const val MAX_LENGTH_SIGN_NAME = 255
+private const val MIN_LENGTH_SIGN_PASSWORD = 6
+private const val MAX_LENGTH_SIGN_PASSWORD = 50
+private const val PASSWORD_PATTERN = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).+$"
+
 fun checkEmpty(text: Editable?): Boolean {
     return text.isNullOrEmpty() || text.trim().isEmpty()
 }
 
 fun checkSignName(text: Editable?): Boolean {
     val lengthString = text.toString().length
-    return lengthString < 3 || lengthString > 255
+    return lengthString < MIN_LENGTH_SIGN_NAME || lengthString > MAX_LENGTH_SIGN_NAME
 }
 
 fun checkEmail(text: Editable?): Boolean {
@@ -21,7 +27,7 @@ fun checkEmail(text: Editable?): Boolean {
 fun checkSignPassword(text: Editable?): Boolean {
     val str = text.toString()
     val lengthString = str.length
-    val patternPassword = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).+$")
+    val patternPassword = Pattern.compile(PASSWORD_PATTERN)
     val matcher = patternPassword.matcher(str)
-    return (lengthString < 6 || lengthString > 50) || !matcher.matches()
+    return (lengthString < MIN_LENGTH_SIGN_PASSWORD || lengthString > MAX_LENGTH_SIGN_PASSWORD) || !matcher.matches()
 }
