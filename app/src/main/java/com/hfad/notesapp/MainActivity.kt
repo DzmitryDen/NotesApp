@@ -1,25 +1,26 @@
 package com.hfad.notesapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.hfad.notesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val buttonStart = findViewById<Button>(R.id.main_button)
-        buttonStart.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
+
+        val buttonStart = binding?.mainButton
+        buttonStart?.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
 
-        val clickQueryText = findViewById<TextView>(R.id.main_query)
-        clickQueryText.setOnClickListener {
+        val clickQueryText = binding?.mainQuery
+        clickQueryText?.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

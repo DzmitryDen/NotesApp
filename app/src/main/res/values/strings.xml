@@ -22,4 +22,6 @@
     <string name="text_add_button">Add</string>
     <string name="error_not_empty">cannot be empty</string>
     <string name="error_common">error</string>
+    <string name="hint_date">Date</string>
+    <string name="check_box_text">Select date</string>
 </resources>
