@@ -1,11 +1,14 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.ui.mainfragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentMainBinding
+import com.hfad.notesapp.ui.signup.SignupFragment
+import com.hfad.notesapp.ui.login.LoginFragment
 
 class MainFragment : Fragment(){
 

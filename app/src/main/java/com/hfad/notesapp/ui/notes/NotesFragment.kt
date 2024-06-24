@@ -1,17 +1,23 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.ui.notes
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hfad.notesapp.adapter.NoteAdapter
+import com.hfad.notesapp.R
+import com.hfad.notesapp.ui.notes.adapter.NoteAdapter
 import com.hfad.notesapp.databinding.FragmentNotesBinding
+import com.hfad.notesapp.db.NoteDataBase
+import com.hfad.notesapp.ui.addnote.AddNoteFragment
+import com.hfad.notesapp.ui.login.LoginFragment
 
 class NotesFragment : Fragment() {
 
     private var binding: FragmentNotesBinding? = null
+    private val viewModel: NotesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,7 +54,7 @@ class NotesFragment : Fragment() {
         binding?.recyclerNotes?.run {
             layoutManager = LinearLayoutManager(context)
             adapter = NoteAdapter().apply {
-                submitList(NoteDataBase.noteList)
+                submitList(viewModel.getNoteList())
             }
         }
     }

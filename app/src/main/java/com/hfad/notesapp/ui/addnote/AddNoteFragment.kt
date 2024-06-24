@@ -1,4 +1,4 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.ui.addnote
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -7,7 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.hfad.notesapp.R
+import com.hfad.notesapp.data.Note
+import com.hfad.notesapp.data.ScheduledNote
 import com.hfad.notesapp.databinding.FragmentAddNoteBinding
+import com.hfad.notesapp.db.NoteDataBase
+import com.hfad.notesapp.ui.notes.NotesFragment
 import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
 import java.util.Calendar
@@ -15,6 +21,7 @@ import java.util.Calendar
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
+    private val viewModel: AddNoteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,23 +49,8 @@ class AddNoteFragment : Fragment() {
         val checkBox = binding?.dateCheckBox
         val dateField = binding?.fieldDate
 
-
-        var blocker1: Boolean = true
-        var blocker2: Boolean = true
-
-        titleField?.doAfterTextChanged { text ->
-            validatorToast(context, checkEmpty(text), getString(R.string.error_not_empty))
-            if (!checkEmpty(text)) {
-                blocker1 = false
-            }
-        }
-
-        messageField?.doAfterTextChanged { text ->
-            validatorToast(context, checkEmpty(text), getString(R.string.error_not_empty))
-            if (!checkEmpty(text)) {
-                blocker2 = false
-            }
-        }
+        viewModel.checkTitleEmpty(titleField, context)
+        viewModel.checkMessageEmpty(messageField, context)
 
         checkBox?.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
@@ -93,7 +85,7 @@ class AddNoteFragment : Fragment() {
                 }
 
                 addButton?.setOnClickListener {
-                    if (!blocker1 && !blocker2) {
+                    if (!viewModel.blocker1 && !viewModel.blocker2) {
                         NoteDataBase.noteList.add(
                             ScheduledNote(
                                 titleField?.text.toString(),
@@ -112,7 +104,7 @@ class AddNoteFragment : Fragment() {
         }
 
         addButton?.setOnClickListener {
-            if (!blocker1 && !blocker2) {
+            if (!viewModel.blocker1 && !viewModel.blocker2) {
                 NoteDataBase.noteList.add(
                     Note(
                         titleField?.text.toString(),

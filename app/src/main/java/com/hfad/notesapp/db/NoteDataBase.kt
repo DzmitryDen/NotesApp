@@ -1,4 +1,7 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.db
+
+import com.hfad.notesapp.data.Note
+import com.hfad.notesapp.data.ScheduledNote
 
 object NoteDataBase {
 

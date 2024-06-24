@@ -1,20 +1,19 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.ui.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentSignupBinding
-import com.hfad.notesapp.validation.checkEmail
-import com.hfad.notesapp.validation.checkSignName
-import com.hfad.notesapp.validation.checkSignPassword
-import com.hfad.notesapp.validation.validatorToast
+import com.hfad.notesapp.ui.login.LoginFragment
 
 class SignupFragment: Fragment() {
 
     private var binding: FragmentSignupBinding? = null
+    private val viewModel: SignupViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,21 +32,10 @@ class SignupFragment: Fragment() {
         val emailField = binding?.signupEmail
         val passwordField = binding?.signupPassword
 
-        firstNameField?.doAfterTextChanged { text ->
-            validatorToast(context, checkSignName(text), getString(R.string.error_common))
-        }
-
-        lastNameField?.doAfterTextChanged { text ->
-            validatorToast(context, checkSignName(text), getString(R.string.error_common))
-        }
-
-        emailField?.doAfterTextChanged { text ->
-            validatorToast(context, checkEmail(text), getString(R.string.error_common))
-        }
-
-        passwordField?.doAfterTextChanged { text ->
-            validatorToast(context, checkSignPassword(text), getString(R.string.error_common))
-        }
+        viewModel.checkSignName(firstNameField, context)
+        viewModel.checkSignName(lastNameField, context)
+        viewModel.checkEmail(emailField, context)
+        viewModel.checkSignPassword(passwordField, context)
 
         val clickQueryText = binding?.signupQuery
         clickQueryText?.setOnClickListener {

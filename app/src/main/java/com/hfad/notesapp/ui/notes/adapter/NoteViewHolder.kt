@@ -1,8 +1,8 @@
-package com.hfad.notesapp.adapter
+package com.hfad.notesapp.ui.notes.adapter
 
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.hfad.notesapp.Note
+import com.hfad.notesapp.data.Note
 import com.hfad.notesapp.databinding.ItemNoteBinding
 import com.hfad.notesapp.utils.toSimpleText
 import java.time.LocalDate

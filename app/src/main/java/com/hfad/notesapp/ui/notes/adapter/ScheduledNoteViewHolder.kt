@@ -1,8 +1,8 @@
-package com.hfad.notesapp.adapter
+package com.hfad.notesapp.ui.notes.adapter
 
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.hfad.notesapp.ScheduledNote
+import com.hfad.notesapp.data.ScheduledNote
 import com.hfad.notesapp.databinding.ItemScheduledNoteBinding
 import com.hfad.notesapp.utils.compareDates
 import com.hfad.notesapp.utils.toSimpleText

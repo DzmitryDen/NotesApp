@@ -1,7 +1,7 @@
-package com.hfad.notesapp.adapter
+package com.hfad.notesapp.ui.notes.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.hfad.notesapp.Note
+import com.hfad.notesapp.data.Note
 
 class NoteDiffUtil : DiffUtil.ItemCallback<Note>() {
 

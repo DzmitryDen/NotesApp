@@ -1,4 +1,4 @@
-package com.hfad.notesapp.adapter
+package com.hfad.notesapp.ui.notes.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.hfad.notesapp.Note
-import com.hfad.notesapp.ScheduledNote
+import com.hfad.notesapp.data.Note
+import com.hfad.notesapp.data.ScheduledNote
 import com.hfad.notesapp.databinding.ItemNoteBinding
 import com.hfad.notesapp.databinding.ItemScheduledNoteBinding
 

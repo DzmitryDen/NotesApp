@@ -1,7 +1,9 @@
-package com.hfad.notesapp
+package com.hfad.notesapp.ui.mainactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.hfad.notesapp.R
+import com.hfad.notesapp.ui.mainfragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
