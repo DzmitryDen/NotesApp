@@ -9,6 +9,7 @@ import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentMainBinding
 import com.hfad.notesapp.ui.signup.SignupFragment
 import com.hfad.notesapp.ui.login.LoginFragment
+import com.hfad.notesapp.ui.onboarding.OnboardingFragment
 
 class MainFragment : Fragment(){
 
@@ -29,7 +30,7 @@ class MainFragment : Fragment(){
         val buttonMain = binding?.mainButton
         buttonMain?.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container, SignupFragment())
+                .replace(R.id.container, OnboardingFragment())
                 .addToBackStack(null)
                 .commit()
         }
