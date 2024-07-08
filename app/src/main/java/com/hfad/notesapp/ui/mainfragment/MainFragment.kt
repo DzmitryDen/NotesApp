@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentMainBinding
+import com.hfad.notesapp.repositories.SharedPreferencesRepository
 import com.hfad.notesapp.ui.signup.SignupFragment
 import com.hfad.notesapp.ui.login.LoginFragment
 import com.hfad.notesapp.ui.onboarding.OnboardingFragment
@@ -29,6 +30,7 @@ class MainFragment : Fragment(){
 
         val buttonMain = binding?.mainButton
         buttonMain?.setOnClickListener {
+            SharedPreferencesRepository.setFirstLaunch()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, OnboardingFragment())
                 .addToBackStack(null)
@@ -37,6 +39,7 @@ class MainFragment : Fragment(){
 
         val clickQueryText = binding?.mainQuery
         clickQueryText?.setOnClickListener {
+            SharedPreferencesRepository.setFirstLaunch()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, LoginFragment())
                 .addToBackStack(null)

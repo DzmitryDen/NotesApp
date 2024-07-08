@@ -7,6 +7,8 @@ import com.hfad.notesapp.databinding.ItemNoteBinding
 import com.hfad.notesapp.utils.toSimpleText
 import java.time.LocalDate
 
+const val MAX_LINES = 2
+
 class NoteViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
 
     private val titleView = binding.titleNote
@@ -27,12 +29,12 @@ class NoteViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHo
         }
 
         messageView.apply {
-            maxLines = 2
+            maxLines = MAX_LINES
             setOnClickListener {
-                maxLines = if (maxLines == 2) {
+                maxLines = if (maxLines == MAX_LINES) {
                     Int.MAX_VALUE
                 } else {
-                    2
+                    MAX_LINES
                 }
             }
         }

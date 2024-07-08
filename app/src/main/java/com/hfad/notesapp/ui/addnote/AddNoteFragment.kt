@@ -18,6 +18,8 @@ import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
 import java.util.Calendar
 
+const val DATE_FORMAT = "%02d/%02d/%04d"
+
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
@@ -43,19 +45,13 @@ class AddNoteFragment : Fragment() {
                 .commit()
         }
 
-        val titleField = binding?.fieldTitle
-        val messageField = binding?.fieldMessage
-        val addButton = binding?.addButton
-        val checkBox = binding?.dateCheckBox
-        val dateField = binding?.fieldDate
+        viewModel.checkTitleEmpty(binding?.fieldTitle, context)
+        viewModel.checkMessageEmpty(binding?.fieldMessage, context)
 
-        viewModel.checkTitleEmpty(titleField, context)
-        viewModel.checkMessageEmpty(messageField, context)
-
-        checkBox?.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding?.dateCheckBox?.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
 
-                dateField?.setOnClickListener {
+                binding?.fieldDate?.setOnClickListener {
                     val calendar = Calendar.getInstance()
                     val day = calendar.get(Calendar.DAY_OF_MONTH)
                     val month = calendar.get(Calendar.MONTH)
@@ -66,9 +62,9 @@ class AddNoteFragment : Fragment() {
                             it1,
                             DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
 
-                                dateField.setText(
+                                binding?.fieldDate?.setText(
                                     String.format(
-                                        "%02d/%02d/%04d",
+                                        DATE_FORMAT,
                                         dayOfMonth,
                                         monthOfYear + 1,
                                         year
@@ -84,13 +80,13 @@ class AddNoteFragment : Fragment() {
                     datePickerDialog?.show()
                 }
 
-                addButton?.setOnClickListener {
+                binding?.addButton?.setOnClickListener {
                     if (!viewModel.blocker1 && !viewModel.blocker2) {
                         NoteDataBase.noteList.add(
                             ScheduledNote(
-                                titleField?.text.toString(),
-                                messageField?.text.toString(),
-                                dateField?.text.toString()
+                                binding?.fieldTitle?.text.toString(),
+                                binding?.fieldMessage?.text.toString(),
+                                binding?.fieldDate?.text.toString()
                             )
                         )
 
@@ -103,12 +99,13 @@ class AddNoteFragment : Fragment() {
             }
         }
 
-        addButton?.setOnClickListener {
+        binding?.addButton?.setOnClickListener {
+
             if (!viewModel.blocker1 && !viewModel.blocker2) {
                 NoteDataBase.noteList.add(
                     Note(
-                        titleField?.text.toString(),
-                        messageField?.text.toString()
+                        binding?.fieldTitle?.text.toString(),
+                        binding?.fieldMessage?.text.toString()
                     )
                 )
 
