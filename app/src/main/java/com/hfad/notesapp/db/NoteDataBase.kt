@@ -2,8 +2,9 @@ package com.hfad.notesapp.db
 
 import com.hfad.notesapp.data.Note
 import com.hfad.notesapp.data.ScheduledNote
+import javax.inject.Inject
 
-object NoteDataBase {
+class NoteDataBase @Inject constructor() {
 
     val noteList = arrayListOf<Any>(
         Note(

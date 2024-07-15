@@ -16,10 +16,12 @@ import com.hfad.notesapp.db.NoteDataBase
 import com.hfad.notesapp.ui.notes.NotesFragment
 import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
 const val DATE_FORMAT = "%02d/%02d/%04d"
 
+@AndroidEntryPoint
 class AddNoteFragment : Fragment() {
 
     private var binding: FragmentAddNoteBinding? = null
@@ -82,13 +84,16 @@ class AddNoteFragment : Fragment() {
 
                 binding?.addButton?.setOnClickListener {
                     if (!viewModel.blocker1 && !viewModel.blocker2) {
-                        NoteDataBase.noteList.add(
-                            ScheduledNote(
-                                binding?.fieldTitle?.text.toString(),
-                                binding?.fieldMessage?.text.toString(),
-                                binding?.fieldDate?.text.toString()
-                            )
-                        )
+
+                        viewModel.addScheduledNote(binding?.fieldTitle, binding?.fieldMessage, binding?.fieldDate)
+
+//                        NoteDataBase().noteList.add(
+//                            ScheduledNote(
+//                                binding?.fieldTitle?.text.toString(),
+//                                binding?.fieldMessage?.text.toString(),
+//                                binding?.fieldDate?.text.toString()
+//                            )
+//                        )
 
                         parentFragmentManager.beginTransaction()
                             .replace(R.id.container, NotesFragment())
@@ -102,12 +107,15 @@ class AddNoteFragment : Fragment() {
         binding?.addButton?.setOnClickListener {
 
             if (!viewModel.blocker1 && !viewModel.blocker2) {
-                NoteDataBase.noteList.add(
-                    Note(
-                        binding?.fieldTitle?.text.toString(),
-                        binding?.fieldMessage?.text.toString()
-                    )
-                )
+
+                viewModel.addNote(binding?.fieldTitle, binding?.fieldMessage)
+
+//                NoteDataBase().noteList.add(
+//                    Note(
+//                        binding?.fieldTitle?.text.toString(),
+//                        binding?.fieldMessage?.text.toString()
+//                    )
+//                )
 
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.container, NotesFragment())

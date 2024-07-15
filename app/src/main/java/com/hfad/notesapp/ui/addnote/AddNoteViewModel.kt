@@ -8,13 +8,17 @@ import com.hfad.notesapp.R
 import com.hfad.notesapp.repositories.NoteRepository
 import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class AddNoteViewModel : ViewModel() {
+@HiltViewModel
+class AddNoteViewModel @Inject constructor(private val noteRepository: NoteRepository) :
+    ViewModel() {
 
     var blocker1: Boolean = true
     var blocker2: Boolean = true
 
-    private val noteRepository = NoteRepository()
+//    private val noteRepository = NoteRepository()
 
     fun addScheduledNote(title: EditText?, message: EditText?, date: EditText?) {
         noteRepository.addScheduledNote(title, message, date)

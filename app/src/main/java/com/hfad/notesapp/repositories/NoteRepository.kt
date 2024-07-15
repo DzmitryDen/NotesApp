@@ -7,8 +7,12 @@ import com.hfad.notesapp.db.DataBaseProvider
 import com.hfad.notesapp.db.NoteDataBase
 import com.hfad.notesapp.db.NoteEntity
 import com.hfad.notesapp.db.ScheduledNoteEntity
+import javax.inject.Inject
 
-class NoteRepository {
+class NoteRepository @Inject constructor(
+    private val dataBaseProvider: DataBaseProvider,
+    private val noteDataBase: NoteDataBase
+) {
 
     fun addScheduledNote(title: EditText?, message: EditText?, date: EditText?) {
 //        NoteDataBase.noteList.add(
@@ -19,8 +23,13 @@ class NoteRepository {
 //            )
 //        )
 
-        DataBaseProvider.scheduledNoteDao?.addScheduledNote(
-            ScheduledNoteEntity(0, title?.text.toString(), message?.text.toString(), date?.text.toString())
+        dataBaseProvider.scheduledNoteDao?.addScheduledNote(
+            ScheduledNoteEntity(
+                0,
+                title?.text.toString(),
+                message?.text.toString(),
+                date?.text.toString()
+            )
         )
     }
 
@@ -32,12 +41,12 @@ class NoteRepository {
 //            )
 //        )
 
-        DataBaseProvider.noteDao?.addNote(
+        dataBaseProvider.noteDao?.addNote(
             NoteEntity(0, title?.text.toString(), message?.text.toString())
         )
     }
 
-    fun getNoteList() : ArrayList<Any>{
-        return NoteDataBase.noteList
+    fun getNoteList(): ArrayList<Any> {
+        return noteDataBase.noteList
     }
 }

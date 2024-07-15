@@ -7,8 +7,11 @@ import androidx.lifecycle.ViewModel
 import com.hfad.notesapp.R
 import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor() : ViewModel() {
 
     fun checkEmpty(field: EditText?, context: Context?) {
         field?.doAfterTextChanged { text ->

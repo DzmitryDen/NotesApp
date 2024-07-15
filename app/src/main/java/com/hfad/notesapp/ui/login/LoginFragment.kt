@@ -14,8 +14,14 @@ import com.hfad.notesapp.ui.notes.NotesFragment
 import com.hfad.notesapp.ui.signup.SignupFragment
 import com.hfad.notesapp.validation.checkEmpty
 import com.hfad.notesapp.validation.validatorToast
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment(){
+
+    @Inject
+    lateinit var sharedPreferencesRepository:SharedPreferencesRepository
 
     private var binding: FragmentLoginBinding? = null
     private val viewModel: LoginViewModel by viewModels()
@@ -48,7 +54,7 @@ class LoginFragment : Fragment(){
 
         val buttonLogin = binding?.loginButton
         buttonLogin?.setOnClickListener {
-            SharedPreferencesRepository.setEmail(emailField.toString())
+            sharedPreferencesRepository.setEmail(emailField.toString())
             parentFragmentManager.beginTransaction()
                 .replace(R.id.container, NotesFragment())
                 .addToBackStack(null)

@@ -13,7 +13,9 @@ import com.hfad.notesapp.databinding.FragmentNotesBinding
 import com.hfad.notesapp.db.NoteDataBase
 import com.hfad.notesapp.ui.addnote.AddNoteFragment
 import com.hfad.notesapp.ui.login.LoginFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotesFragment : Fragment() {
 
     private var binding: FragmentNotesBinding? = null

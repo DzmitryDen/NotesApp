@@ -9,8 +9,11 @@ import com.hfad.notesapp.validation.validatorToast
 import com.hfad.notesapp.validation.checkSignName
 import com.hfad.notesapp.validation.checkEmail
 import com.hfad.notesapp.validation.checkSignPassword
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SignupViewModel: ViewModel() {
+@HiltViewModel
+class SignupViewModel @Inject constructor(): ViewModel() {
 
     fun checkSignName(field: EditText?, context: Context?) {
         field?.doAfterTextChanged { text ->

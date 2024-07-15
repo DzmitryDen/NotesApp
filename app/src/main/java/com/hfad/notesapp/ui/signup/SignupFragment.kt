@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentSignupBinding
 import com.hfad.notesapp.ui.login.LoginFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignupFragment: Fragment() {
 
     private var binding: FragmentSignupBinding? = null
