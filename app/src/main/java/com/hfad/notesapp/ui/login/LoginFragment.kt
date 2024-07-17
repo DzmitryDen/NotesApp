@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentLoginBinding
 import com.hfad.notesapp.repositories.SharedPreferencesRepository
+import com.hfad.notesapp.ui.home.HomeFragment
 import com.hfad.notesapp.ui.notes.NotesFragment
 import com.hfad.notesapp.ui.signup.SignupFragment
 import com.hfad.notesapp.validation.checkEmpty
@@ -56,7 +57,7 @@ class LoginFragment : Fragment(){
         buttonLogin?.setOnClickListener {
             sharedPreferencesRepository.setEmail(emailField.toString())
             parentFragmentManager.beginTransaction()
-                .replace(R.id.container, NotesFragment())
+                .replace(R.id.container, HomeFragment()/*NotesFragment()*/)
                 .addToBackStack(null)
                 .commit()
         }

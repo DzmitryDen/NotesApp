@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.hfad.notesapp.R
 import com.hfad.notesapp.repositories.SharedPreferencesRepository
+import com.hfad.notesapp.ui.home.HomeFragment
 import com.hfad.notesapp.ui.login.LoginFragment
 import com.hfad.notesapp.ui.mainfragment.MainFragment
 import com.hfad.notesapp.ui.notes.NotesFragment
@@ -23,13 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         if (sharedPreferencesRepository.isFirstLaunch()) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment())
+                .replace(R.id.container, /*HomeFragment()*/ MainFragment())
                 .commit()
         } else {
             if (sharedPreferencesRepository.getEmail() != null) {
                 setContentView(R.layout.activity_main)
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, NotesFragment())
+                    .replace(R.id.container, HomeFragment()/*NotesFragment()*/)
                     .commit()
             } else {
                 setContentView(R.layout.activity_main)

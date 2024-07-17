@@ -12,6 +12,7 @@ import com.hfad.notesapp.ui.notes.adapter.NoteAdapter
 import com.hfad.notesapp.databinding.FragmentNotesBinding
 import com.hfad.notesapp.db.NoteDataBase
 import com.hfad.notesapp.ui.addnote.AddNoteFragment
+import com.hfad.notesapp.ui.home.HomeFragment
 import com.hfad.notesapp.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +36,8 @@ class NotesFragment : Fragment() {
 
         val navigationButtonLogout = binding?.logout
         navigationButtonLogout?.setOnClickListener {
-            parentFragmentManager.beginTransaction()
+            requireActivity().supportFragmentManager.beginTransaction()
+//            parentFragmentManager.beginTransaction()
                 .replace(R.id.container, LoginFragment())
                 .addToBackStack(null)
                 .commit()
@@ -43,8 +45,9 @@ class NotesFragment : Fragment() {
 
         val navigationButtonAddNew = binding?.addNew
         navigationButtonAddNew?.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, AddNoteFragment())
+            requireActivity().supportFragmentManager.beginTransaction()
+//            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, HomeFragment()/*AddNoteFragment()*/)
                 .addToBackStack(null)
                 .commit()
         }

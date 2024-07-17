@@ -5,17 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.hfad.notesapp.R
-import com.hfad.notesapp.data.Note
-import com.hfad.notesapp.data.ScheduledNote
 import com.hfad.notesapp.databinding.FragmentAddNoteBinding
-import com.hfad.notesapp.db.NoteDataBase
+import com.hfad.notesapp.ui.home.HomeFragment
 import com.hfad.notesapp.ui.notes.NotesFragment
-import com.hfad.notesapp.validation.checkEmpty
-import com.hfad.notesapp.validation.validatorToast
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 
@@ -41,8 +36,9 @@ class AddNoteFragment : Fragment() {
 
         val navigationButtonBack = binding?.back
         navigationButtonBack?.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, NotesFragment())
+            requireActivity().supportFragmentManager.beginTransaction()
+//            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, HomeFragment()/*NotesFragment()*/)
                 .addToBackStack(null)
                 .commit()
         }
@@ -85,7 +81,11 @@ class AddNoteFragment : Fragment() {
                 binding?.addButton?.setOnClickListener {
                     if (!viewModel.blocker1 && !viewModel.blocker2) {
 
-                        viewModel.addScheduledNote(binding?.fieldTitle, binding?.fieldMessage, binding?.fieldDate)
+                        viewModel.addScheduledNote(
+                            binding?.fieldTitle,
+                            binding?.fieldMessage,
+                            binding?.fieldDate
+                        )
 
 //                        NoteDataBase().noteList.add(
 //                            ScheduledNote(
@@ -95,8 +95,9 @@ class AddNoteFragment : Fragment() {
 //                            )
 //                        )
 
-                        parentFragmentManager.beginTransaction()
-                            .replace(R.id.container, NotesFragment())
+                        requireActivity().supportFragmentManager.beginTransaction()
+//                        parentFragmentManager.beginTransaction()
+                            .replace(R.id.container, HomeFragment() /*NotesFragment()*/)
                             .addToBackStack(null)
                             .commit()
                     }
@@ -116,9 +117,9 @@ class AddNoteFragment : Fragment() {
 //                        binding?.fieldMessage?.text.toString()
 //                    )
 //                )
-
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, NotesFragment())
+                requireActivity().supportFragmentManager.beginTransaction()
+//                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, HomeFragment()/*NotesFragment()*/)
                     .addToBackStack(null)
                     .commit()
             }
