@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/notes"
+        android:icon="@drawable/notes_24dp"
+        android:title="Notes"/>
+
+    <item android:id="@+id/add"
+        android:icon="@drawable/note_add_24dp"
+        android:title="Add"/>
+
+    <item android:id="@+id/search"
+        android:icon="@drawable/manage_search"
+        android:title="Search"/>
+
+    <item android:id="@+id/profile"
+        android:icon="@drawable/person_24dp"
+        android:title="Profile"/>
+</menu>
