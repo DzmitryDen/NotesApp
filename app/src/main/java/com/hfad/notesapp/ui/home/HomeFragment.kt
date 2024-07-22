@@ -9,6 +9,8 @@ import com.hfad.notesapp.R
 import com.hfad.notesapp.databinding.FragmentHomeBinding
 import com.hfad.notesapp.ui.addnote.AddNoteFragment
 import com.hfad.notesapp.ui.notes.NotesFragment
+import com.hfad.notesapp.ui.profile.ProfileFragment
+import com.hfad.notesapp.ui.search.SearchFragment
 
 class HomeFragment: Fragment() {
 
@@ -48,6 +50,16 @@ class HomeFragment: Fragment() {
                 }
 
                 R.id.search -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, SearchFragment())
+                        .commit()
+                    true
+                }
+
+                R.id.profile -> {
+                    childFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, ProfileFragment())
+                        .commit()
                     true
                 }
 

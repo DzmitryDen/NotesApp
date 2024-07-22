@@ -14,7 +14,7 @@ class NoteRepository @Inject constructor(
     private val noteDataBase: NoteDataBase
 ) {
 
-    fun addScheduledNote(title: EditText?, message: EditText?, date: EditText?) {
+    suspend fun addScheduledNote(title: EditText?, message: EditText?, date: EditText?) {
 //        NoteDataBase.noteList.add(
 //            ScheduledNote(
 //                title?.text.toString(),
@@ -33,7 +33,7 @@ class NoteRepository @Inject constructor(
         )
     }
 
-    fun addNote(title: EditText?, message: EditText?) {
+    suspend fun addNote(title: EditText?, message: EditText?) {
 //        NoteDataBase.noteList.add(
 //            Note(
 //                title?.text.toString(),

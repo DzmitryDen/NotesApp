@@ -9,14 +9,14 @@ import androidx.room.Query
 interface ScheduledNoteDao {
 
     @Insert
-    fun addScheduledNote(scheduledNote: ScheduledNoteEntity) // добавление заметки
+    suspend fun addScheduledNote(scheduledNote: ScheduledNoteEntity) // добавление заметки
 
     @Delete
-    fun deleteScheduledNoteById(scheduledNote: ScheduledNoteEntity) // удаление заметки
+    suspend fun deleteScheduledNoteById(scheduledNote: ScheduledNoteEntity) // удаление заметки
 
     @Query("SELECT * FROM ScheduledNote")
-    fun getAllScheduledNotes(): List<ScheduledNoteEntity> // получение всех заметок
+    suspend fun getAllScheduledNotes(): List<ScheduledNoteEntity> // получение всех заметок
 
     @Query("SELECT * FROM ScheduledNote WHERE id == :id LIMIT 1")
-    fun getScheduledNoteById(id: Int): ScheduledNoteEntity // получение заметки по id
+    suspend fun getScheduledNoteById(id: Int): ScheduledNoteEntity // получение заметки по id
 }
